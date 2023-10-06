@@ -1,0 +1,258 @@
+@use '../css/Media';
+
+.about-info-wrapper{
+    font-size: 1.5em;
+    display: grid;
+    border-radius: 20px 0;
+    padding: 20px;
+    gap: 1em;
+    font-family: ui-monospace;
+    transition: 1s ease;
+
+    @media #{Media.$iphone-portrait}{
+        padding: 0;
+        font-size: 1.5rem;
+    }
+}
+
+.about-info{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.about-info-bg{
+    height: fit-content;
+    font-size: calc(2rem + 2vmin);
+    transform: translateX(-100%);
+    opacity: 0;
+
+    @media #{Media.$ipad-pro-landscape}{
+        font-size: calc(10px + 2vmin);
+        padding: 0;  
+    }
+
+    @media #{Media.$ipad-pro-portrait}{
+        width: 100%;
+    }
+
+    @media #{Media.$iphone-portrait}{
+        width: 100%;
+        font-size: calc(10px + 2vmax);
+        padding: 20px;
+    }
+    @media #{Media.$iphone-landscape}{
+        width: 60%;
+        font-size: calc(10px + 2vmin);
+        padding: 20px;
+    }
+}
+
+.about-pic{
+    align-self: flex-start;
+    position: relative;
+    display: grid;
+    align-items: center;
+
+    &::after{
+        content: "";
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #00bab178;
+        position: absolute;
+        border-radius: 5px;
+        transition: .5s;   
+    }
+
+    @media #{Media.$iphone-portrait} {
+        align-self: center;
+    }
+}
+
+.about-pic:hover{
+    
+    &::after{
+        background: transparent;
+    }
+    img{
+        filter: none;
+    } 
+}
+
+.about-pic img{
+    width: calc(10em + 2vmin);
+    //mix-blend-mode: multiply;
+    filter: grayscale(100%) contrast(1);
+    transition: .5s;
+    border: 1px solid;
+    border-radius: 5px;
+
+    @media #{Media.$ipad-pro-landscape}{
+        width: 15em;
+    }
+    @media #{Media.$ipad-pro-portrait}{
+        width: 10em;
+    }
+    @media #{Media.$iphone-portrait}, #{Media.$iphone-landscape}{
+        width: calc(6em + 2vmax);
+    }
+}
+
+@keyframes slideInLeft-aboutpic {
+    100%{transform: translateX(0); opacity: 1;}
+}
+
+@keyframes slideInLeft {
+    0%{transform: translateX(-250%);
+        opacity: 0;}
+    100%{transform: translateX(0);
+    opacity: 1;}
+}
+
+.about-info-wrapper article{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+    padding: 30px;
+    background: #b5bebec9;
+    border-radius: 5px;
+    box-shadow: 2px 3px 10px #c0bfbf;
+    align-items: flex-start;
+
+    @media #{Media.$iphone-portrait} {
+        flex-direction: column-reverse;
+        gap: 1em;
+
+        .headshot-container{
+            display: grid;
+            align-self: center;
+        }
+    }
+}
+
+
+
+.about-l1{
+    font-size: calc(1em + 2vmin);
+    font-weight: bold;
+
+    @media #{Media.$iphone-portrait}, #{Media.$iphone-landscape}{
+        font-size: calc(.5em + 2vmin);;
+    }
+}
+
+.about-l3{
+    font-size: calc(5px + 2vmin);
+    text-align: center;
+}
+
+.about-info-main{
+    grid-gap: 1rem;
+    display: grid;
+
+    @media #{Media.$iphone-portrait} {
+        font-size: calc(10px + 2vw);
+    }
+}
+
+.heading-text {
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    transform: translateY(100%);
+    opacity: 0;
+    display: flex;
+    
+    h2 {
+    margin: 0;
+    padding: 0;
+    font-size: clamp(40px, 8vw, 60px);
+    position: relative;
+    width: fit-content;
+
+    }
+
+    &::after{
+        content: "";
+        top: 50%;
+        left: 62%;
+        right: 10%;
+        height: 1px;
+        position: absolute;
+        background: #3c415e;
+
+        @media #{Media.$iphone-portrait} {
+            left: 80%;
+            right: 0%;
+        }
+
+        @media #{Media.$ipad-pro-landscape} {
+            left: 65%;
+            right: 5%;
+        }
+
+        @media #{Media.$ipad-pro-portrait} {
+            left: 70%;
+            right: 5%;
+        }
+    }
+
+    &::before{
+        content: "";
+        top: 50%;
+        left: 10%;
+        right: 62%;
+        height: 1px;
+        position: absolute;
+        background: #3c415e;
+
+        @media #{Media.$iphone-portrait} {
+            left: 0%;
+            right: 80%;
+        }
+
+        @media #{Media.$ipad-pro-landscape} {
+            left: 5%;
+            right: 65%;
+        }
+
+        @media #{Media.$ipad-pro-portrait} {
+            left: 5%;
+            right: 70%;
+        }
+    }
+}
+
+@keyframes labelSlideInTop {
+    60%{transform: translateY(-10%);}
+    80%{transform: translateY(5%);}
+    100%{transform: translateY(0%);opacity: 1; }
+}
+
+.text-link {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+    text-decoration: none;
+  }
+  
+  .text-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .text-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }

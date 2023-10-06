@@ -1,0 +1,380 @@
+@use 'Media';
+
+
+.Home{
+  min-height: calc(100vh - 200px);
+  gap: 5em;
+  justify-content: center;
+
+  @media #{Media.$iphone-landscape}{
+    min-height: 100vh;
+    flex-direction: column-reverse;
+    padding: 0 50px;
+  }
+}
+
+.Home-main img {
+  width: 25em;
+  height: 20em;
+}
+
+.Home article{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+
+    // @media #{Media.$ipad-pro-portrait}{
+    //   flex-direction: column-reverse;
+    // }
+
+    @media #{Media.$iphone-landscape}{
+      // padding: 0;
+      flex-direction: row-reverse;
+    }
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+  gap: 2em;
+  justify-content: center;
+  font-family: inherit;
+  padding: 10px;
+
+  @media #{Media.$ipad-pro-portrait},#{Media.$iphone-portrait}{
+    max-width: auto;
+  }
+
+  @media #{Media.$iphone-landscape} {
+    max-width: 60%;
+    gap: 1em;
+  }
+
+  @media #{Media.$iphone-landscape}{
+    flex-flow: row wrap;
+    justify-content: flex-start;
+  }
+}
+
+.info-l1-wraper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.big-heading{
+  font-size: clamp(40px, 8vw, 80px);
+  margin: 0;
+}
+
+.info-l1{
+  width: fit-content;
+  opacity: 0;
+  animation: drop 1s linear forwards .4s;
+  font-weight: bold;
+
+  @media #{Media.$iphone-landscape}, #{Media.$iphone-portrait}{
+    font-size: 2em;
+  }
+}
+
+.info-l2{
+  width: fit-content;
+  font-weight: bold;
+  align-self: center;
+
+  @media #{Media.$iphone-landscape}, #{Media.$iphone-portrait}{
+    font-size: 2em;
+  }
+}
+
+.drop-heading{
+  opacity: 0;
+  animation: drop .5s linear forwards 1.5s;
+}
+
+.info-l3{
+  font-size: 2em;
+  text-align: justify;
+  opacity: 0;
+  animation: drop .5s linear forwards 1.8s;
+
+  @media #{Media.$iphone-landscape}, #{Media.$iphone-portrait}{
+    font-size: 1.2em;
+  }
+}
+
+.info-bg {
+  border-radius: 20px 0;
+}
+
+.avatar-container{
+  padding: 10px;
+  width: fit-content;
+  border-radius: 50%;
+  background : #{Media.$theme-light};
+  animation: avatarScaleIn .5s ease-out 2.3s forwards;
+  overflow: hidden;
+  transition: transform .5s;
+  border: 2px solid;
+  opacity: 0;
+  transform: scale(.2);
+
+  img{
+    margin: auto;
+    width: calc(10em + 2vmin);
+    animation: fadeIn 1s;
+    margin: 30px;
+  
+    @media #{Media.$ipad-pro-portrait}{
+        max-width: 15em;
+    }
+  
+    @media #{Media.$iphone-landscape}, #{Media.$iphone-portrait}{
+      max-width: 8em;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
+@keyframes rotateY {
+  to{transform: rotateY(360deg)};
+}
+
+@keyframes avatarScaleIn {
+  to{transform: scale(1);
+    opacity: 1;}
+}
+
+// .avatar img:hover{
+//   transform: scale(1.5);
+// }
+
+#hire-me{
+    background: #2cc1c100;
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: transform 0.5s forwards 2.3s;
+
+    @media #{Media.$iphone-landscape}, #{Media.$iphone-portrait}{
+      font-size: 1em;
+    }
+}
+
+// #hire-nav:hover{
+//     transform: scale(1.2);
+// }
+
+.info nav{
+  align-self: flex-end;
+  // filter: drop-shadow(2px 4px 6px grey);
+}
+
+#hire-nav{
+    animation: hire-slideInLeft 1s ease-in;
+    transition: 0.2s;
+    width: fit-content;
+    /* border: 1px solid grey; */
+    padding: 10px 10px;
+    border: 2px solid #3c415e;
+    border-radius: 20px 0;
+
+    &:active{
+      background: rgb(60 65 94);
+      color: white;
+    }
+
+    @media #{Media.$iphone-landscape}, #{Media.$iphone-portrait}{
+      border-radius: 15px 0;
+    }
+}
+
+.hire-link-wrap{
+    max-width: fit-content;
+    border-radius: 20px 0;
+    align-self: center;
+    transition: 1s;
+    margin-top: 1em;
+
+    &:hover{
+      background: rgb(162, 184, 198);
+      transform: scale(1.2);
+    }
+
+    @media #{Media.$ipad-pro-landscape}{
+      align-self: flex-start;
+    }
+
+    @media #{Media.$iphone-portrait}{
+      align-self: flex-start;
+      margin-top: 1em;
+    }
+}
+
+@keyframes hire-slideInLeft {
+  0%{transform: translateX(-100%);opacity: 0;}
+  100%{transform: translateX(0);opacity: 1;}
+}
+
+/* #avatar:hover{
+  animation: avatarRotate 1.5s linear infinite;
+} */
+
+@keyframes avatarRotate {
+  0%{
+      transform: rotate(0deg);}
+  100%{
+      transform: rotate(350deg);}
+}
+
+.scroller-wrapper{
+    border: 3px solid #{Media.$bg-color-2};
+    border-radius: 20px;
+    width: 30px;
+    height: 40px;
+    display: grid;
+    text-align: center;
+    padding: 5px 0;
+    animation: scrollerScaleUp .5s ease-out forwards 2.3s;
+    position: fixed;
+    bottom: 70px;
+    opacity: 1;
+    align-self: center;
+    opacity: 0;
+    transform: translateY(200%);
+
+    @media #{Media.$iphone-landscape}, #{Media.$iphone-portrait}{
+      bottom: 10px;
+    }
+}
+
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0,0);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
+@keyframes drop {
+  0% {transform: translateY(-200px) scaleY(0.9); opacity: 0;}
+  5% {opacity: .2;}
+  50% {transform: translateY(0px) scaleY(1); opacity: 1;}
+  65% {transform: translateY(-17px) scaleY(.9); opacity: 1;}
+  75% {transform: translateY(-22px) scaleY(.9); opacity: 1;}
+  100% {transform: translateY(0px) scaleY(1); opacity: 1;}
+}
+
+.resume-link-wrap{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.resumeLink{
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: inherit;
+  font-size: 25px;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  width: fit-content;
+  border: 2px solid #3c415e;
+  border-radius: 20px 0;
+  transition: .5s;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: resumeSlideInBottom .5s forwards 2.3s;
+
+  &:active{
+      background: #b8b9bf;
+      color: white;
+
+      .download-wrapper{
+        border-bottom: 4px solid white;
+      }
+  }
+
+  @media #{Media.$iphone-landscape}, #{Media.$iphone-portrait}{
+      font-size: 15px;
+  }
+}
+
+@keyframes resumeSlideInBottom {
+    to{transform: translateY(0);
+    opacity: 1;}
+}
+
+.download-wrapper{
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 4px solid #{Media.$font-dark};
+
+  img{
+      width: 1em;
+      height: 1em;
+      animation: translateY-infinite 1s linear infinite;
+  }
+}
+
+@keyframes translateY-infinite {
+  0%{transform: translateY(-20%);}
+  100%{transform: translateY(30%);}
+}
+
+.qr-wrapper{
+  display: grid;
+  transition: 1s;
+  cursor: pointer;
+  opacity: 0;
+  animation: drop .5s linear forwards 3.8s;
+  display: none;
+
+  #qr-logo{
+      width: 2.5em;
+      margin: auto;
+  }
+  img{
+      width: 5em;
+  }
+  &:hover{
+      transform: scale(1.2);
+  }
+}
+
+.resume-qr{
+    width: fit-content;
+    transition: 1s ease;
+    height: 0;
+    overflow: hidden;
+    align-self: center;
+  
+  img{
+      width: 10em;
+  }
+}
+
+.show-qr{
+  height: calc(8em + 2vmin);
+}
+
+.about-info p{
+  margin: 0;
+}

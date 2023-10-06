@@ -1,0 +1,120 @@
+@use '../css/Media.scss';
+
+.nav-link-wrap{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+
+    @media #{Media.$iphone-portrait}  {
+        flex-direction: column;
+        height: 60vh;
+        color: white;
+        margin-top: 25%;
+        justify-content: space-evenly;
+        box-sizing: border-box;
+    }
+
+    a{
+      border-bottom: 2px solid rgba(255, 255, 255, 0);
+    }
+  }
+
+  .--nav-font{
+    @media #{Media.$iphone-portrait} {
+      font-size: calc(13px + 2vw);
+    }
+  }
+
+  .scale{
+    display: block;
+    transition: transform .2s;
+  }
+
+  .scale:hover{
+    transform: scale(1.2);
+  }
+
+  .active{
+    color: #{Media.$bg-color-1};
+  }
+
+  .nav-menu-show{
+    display: flex;
+  }
+
+  .nav-menu-close{
+    display: none;
+  }
+
+  #nav-close-btn{
+      display: none;
+
+      img{
+        max-width: 2em;
+      }
+  }
+
+  @media #{Media.$iphone-portrait} {
+    .nav-centre{
+        display: grid;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+    }
+    .nav-link-wrap a{
+        align-content: center;
+        display: grid;
+        align-self: center;
+    }
+    #nav-close-btn{
+      display: grid;
+        right: 0;
+        position: absolute;
+        padding: 0.5em 1em;;
+        top: 0;
+    }
+  }
+
+  .home-nav{
+    opacity: 0;
+    transform: translate(-50px,-150%);
+    animation: nav-option-pop .5s forwards .5s;
+  }
+
+  .about-nav{
+    opacity: 0;
+    transform: translate(-50px,-150%);
+    animation: nav-option-pop .5s forwards .6s;
+  }
+
+  .skills-nav{
+    opacity: 0;
+    transform: translate(-50px,-150%);
+    animation: nav-option-pop .5s forwards .7s;
+  }
+
+  .project-nav{
+    opacity: 0;
+    transform: translate(-50px,-150%);
+    animation: nav-option-pop .5s forwards .8s;
+  }
+
+  .work-nav{
+    opacity: 0;
+    transform: translate(-50px,-150%);
+    animation: nav-option-pop .5s forwards .9s;
+  }
+
+  .contact-nav{
+    opacity: 0;
+    transform: translate(-50px,-150%);
+    animation: nav-option-pop .5s forwards 1s;
+  }
+
+  @keyframes nav-option-pop {
+    to{transform: translate(0,0); opacity: 1;}
+  }
+

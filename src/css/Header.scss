@@ -1,0 +1,150 @@
+@use 'Media';
+
+.Header{
+    display: grid;
+    width: 100%;
+    height: 5em;
+    position: fixed;
+    border-bottom: 1px solid rgb(203, 203, 203);
+    z-index: 10;
+    animation: slideInTop-head .5s ease-in-out;
+    margin-top: 5px;
+    transition: .3s;
+    backdrop-filter: blur(10px);
+
+    @media #{Media.$iphone-portrait}, #{Media.$iphone-landscape}{
+        height: 3em;
+    }
+}
+
+#nav-button img{
+    width: 2em; 
+    transition: .5s;
+    animation-delay: .2s;
+}
+
+.rotate-anticlock{
+    transform: rotate(-45deg);
+}
+.rotate-clock{
+    transform: rotate(0);
+}
+
+
+
+.head-on-scroll{
+    height: 3.5em;
+    box-shadow: 0 0 14px 0 #b2b2b2;
+    background-color: rgb(186 186 186 / 30%);
+
+    @media #{Media.$iphone-portrait}, #{Media.$iphone-landscape}{
+        height: 2.5em;
+    }
+}
+
+.head-wrapper {
+    // background-color: rgba(230, 230, 230, 0.58);
+    width: 100%;
+    font-size: calc(8px + 2vmin);
+    display: flex;
+    gap: .5em;
+    position: relative;
+    // background-color: rgb(255 255 255 / 30%);
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+    transition: .3s ease-in;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+
+    @media #{Media.$iphone-portrait}{
+        padding: 0 20px;
+    }
+}
+
+#nav-button{
+    display: none;
+
+    @media #{Media.$iphone-portrait}{
+        display: grid;
+    }
+}
+
+.smodi-link{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    opacity: 0;
+    transform: translate(-50px,-150%);
+    animation: translate-nav .5s forwards .5s;
+}
+
+@keyframes translate-nav {
+    to{transform: translate(0,0); opacity: 1;}
+}
+
+#progress-bar-wrapper{
+    height: 5px;
+    position: fixed;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    width: 100%;
+}
+
+#progress-bar{
+    height: 5px;
+    position: fixed;
+    background-color: #{Media.$bg-color-1};
+    z-index: 2;
+}
+
+//Ipad Pro Landscape
+@media #{Media.$ipad-pro-landscape}{
+    #avatar{
+        max-width: 20em;
+    }
+}
+
+@media screen and (min-width:75em) {
+    .App-header {
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 2em;
+    }
+  }
+
+// @media screen and (min-width:40em) and (max-width:80em) and (min-height:50){
+//     #smodi {
+//       margin-left: 5%;
+//     }
+// }
+
+@media #{Media.$iphone-portrait}{
+    .App-header {
+        flex-flow: column;
+        height: 3em;
+    }
+    .head-on-scroll{
+        height: 2.5em;
+    }
+    .nav-bg-portrait{
+        height: 100vh;
+        background: rgb(54 126 124);
+        z-index: 12;
+        position: fixed;
+        opacity: 1;
+        transform: translateX(100%);
+        transition: .4s;
+        width: 75%;
+        right: 0;
+    }
+    .nav-greyout{
+        transform: translateX(0);
+    }
+}
+
